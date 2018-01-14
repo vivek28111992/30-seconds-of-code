@@ -1,0 +1,16 @@
+// partition
+// Groups the elements into two arrays, depending on the provided function's truthiness for each element.
+// Use Array.reduce() to create an array of two arrays. Use Array.push() to add elements for which fn returns true to the first array & elements for which fn returns false to the second one.
+
+const partition = (arr, fn) => 
+	arr.reduce(
+		(acc, val, i, arr) => {
+			acc[fn(val, i, arr) ? 0 : 1].push(val);
+			return acc;
+		},
+		[[], []]
+	);
+
+const users = [{ user: 'barney', age: 36, active: false }, { user: 'fred', age: 40, active: true }];
+const result = partition(users, o => o.active);
+console.log(result);
